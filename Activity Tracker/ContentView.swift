@@ -18,14 +18,14 @@ struct ContentView: View {
                     AddView()
                         .navigationTitle("Add Activity")
                 }
-                Spacer()
-            ListView()
-                .toolbar {
-                    Button("+") {
-                        showAddMenu.toggle()
+                ListView()
+                    .navigationTitle("Activities")
+                    .toolbar {
+                        Button("+") {
+                            showAddMenu.toggle()
+                        }
                     }
-                }
-            
+                Spacer()
             }
         }
     }
@@ -33,10 +33,13 @@ struct ContentView: View {
 
 struct ListView: View {
     var body: some View {
-        VStack {
-            Text("Activity 1")
-            Text("Activity 2")
+        List(0..<5) { item in
+            VStack(alignment: .leading) {
+                Text("Activity 1")
+                Text("Activity 2")
+            }
         }
+        
     }
 }
 
@@ -55,7 +58,9 @@ struct AddView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-.previewInterfaceOrientation(.portrait)
+        Group {
+            ContentView()
+                .previewInterfaceOrientation(.portrait)
+        }
     }
 }
